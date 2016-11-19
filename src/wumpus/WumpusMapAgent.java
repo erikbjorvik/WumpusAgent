@@ -33,4 +33,5 @@ public class WumpusMapAgent extends WumpusMap {
 		
 	}
 	
+	
 }

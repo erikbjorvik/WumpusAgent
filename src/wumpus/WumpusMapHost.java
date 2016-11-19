@@ -31,14 +31,10 @@ public class WumpusMapHost extends WumpusMap {
 	 */
 	private void setBlank() {
 			
-			boolean[] buffer = new boolean[NUMBER_OF_OBJECTS_AND_PERCEPTS];
-			buffer[BLANK]=true;
-			CellData blankCell = new CellData(buffer);
-			
 			for(int i=0; i<MAP_SIZE; i++) {
 				//the columns.
 				for (int j=0; j<MAP_SIZE; j++) {
-						map[i][j] = blankCell;
+						map[i][j] = new CellData();
 				}
 				
 			}
@@ -53,21 +49,21 @@ public class WumpusMapHost extends WumpusMap {
 		
 		for (int i=0; i<MAP_SIZE;i++) {
 			
-			boolean[] buffer_w = new boolean[NUMBER_OF_OBJECTS_AND_PERCEPTS];
-			buffer_w[WALL]=true;
-			CellData wallCell = new CellData(buffer_w);
 			
 			//Set first row to walls.
-			map[0][i] = wallCell;
+			map[0][i].addTrue(WALL);
+			map[0][i].addFalse(BLANK);
 			
 			// Set last row to walls.
-			map[MAP_SIZE-1][i] = wallCell;
+			map[MAP_SIZE-1][i].addTrue(WALL);
+			map[MAP_SIZE-1][i].addFalse(BLANK);
+			// Set all the cells at left side to walls.
+			map[i][0].addTrue(WALL);
+			map[i][0].addFalse(BLANK);
 			
 			// Set all the cells at left side to walls.
-			map[i][0] = wallCell;
-			
-			// Set all the cells at left side to walls.
-			map[i][MAP_SIZE-1] = wallCell;
+			map[i][MAP_SIZE-1].addTrue(WALL);
+			map[i][MAP_SIZE-1].addFalse(BLANK);
 			
 		}
 		
@@ -80,49 +76,31 @@ public class WumpusMapHost extends WumpusMap {
 	 */
 	protected void setHardcodedMap() {
 		
-		boolean[] buffer_wall = new boolean[NUMBER_OF_OBJECTS_AND_PERCEPTS];
-		buffer_wall[WALL]=true;
+		map[4][2].addTrue(PIT); 
+		map[4][1].addTrue(BREEZE);
+		map[4][3].addTrue(BREEZE);
+		map[3][2].addTrue(BREEZE);
+		map[5][2].addTrue(BREEZE); 
 		
-		boolean[] buffer_pit = new boolean[NUMBER_OF_OBJECTS_AND_PERCEPTS];
-		buffer_pit[PIT]=true;
+		map[5][5].addTrue(PIT);
+		map[5][4].addTrue(BREEZE);
+		map[5][6].addTrue(BREEZE);
+		map[4][5].addTrue(BREEZE);
+		map[6][5].addTrue(BREEZE); 
 		
-		boolean[] buffer_breeze = new boolean[NUMBER_OF_OBJECTS_AND_PERCEPTS];
-		buffer_breeze[BREEZE]=true;
+		map[1][7].addTrue(PIT);
+		map[1][6].addTrue(BREEZE);
+		map[1][8].addTrue(BREEZE);
+		map[2][7].addTrue(BREEZE); 
+		// map[0][7] THIS IS A WALL!
 		
-		boolean[] buffer_glitter = new boolean[NUMBER_OF_OBJECTS_AND_PERCEPTS];
-		buffer_glitter[GLITTER]=true;
+		map[6][7].addTrue(GLITTER);
 		
-		boolean[] buffer_wumpus = new boolean[NUMBER_OF_OBJECTS_AND_PERCEPTS];
-		buffer_wumpus[WUMPUS]=true;
-		
-		boolean[] buffer_stench = new boolean[NUMBER_OF_OBJECTS_AND_PERCEPTS];
-		buffer_stench[STENCH]=true;
-		
-		map[4][2] = new CellData(buffer_pit); 
-		map[4][1] = new CellData(buffer_breeze); 
-		map[4][3] = new CellData(buffer_breeze);
-		map[3][2] = new CellData(buffer_breeze); 
-		map[5][2] = new CellData(buffer_breeze); 
-		
-		map[5][5] = new CellData(buffer_pit); 
-		map[5][4] = new CellData(buffer_breeze); 
-		map[5][6] = new CellData(buffer_breeze);
-		// map[4][5] = BREEZE; THE WUMPUS IS HERE.
-		map[6][5] = new CellData(buffer_breeze); 
-		
-		map[1][7] = new CellData(buffer_pit);  
-		map[1][6] = new CellData(buffer_breeze); 
-		map[1][8] = new CellData(buffer_breeze);
-		map[2][7] = new CellData(buffer_breeze); 
-		// map[0][7] = BREEZE; THIS IS A WALL!
-		
-		map[6][7] = new CellData(buffer_glitter); 
-		
-		map[4][5] = new CellData(buffer_wumpus); 
-		map[4][4] = new CellData(buffer_stench); 
-		map[4][6] = new CellData(buffer_stench);
-		map[3][5] = new CellData(buffer_stench);
-		//map[5][5] = STENCH; PIT IS HERE
+		map[4][5].addTrue(WUMPUS);
+		map[4][4].addTrue(STENCH); 
+		map[4][6].addTrue(STENCH);
+		map[3][5].addTrue(STENCH);
+		//map[5][5] PIT IS HERE
 		
 		
 	}
