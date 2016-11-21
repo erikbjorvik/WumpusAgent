@@ -24,9 +24,15 @@ public class TestLogic extends WumpusCore {
 		// Test if hitting a wall gives the correct results!
 		assertEquals(true, agent.getMap()[0][0].cellData[UNDISCOVERED]); //undiscovered before the move.
 		assertEquals(false, agent.getMap()[0][0].cellData[WALL]);		//no wall before the move
+<<<<<<< HEAD
 		int perceive = logic.move(0, 0);												//make the move
 		agent.setMap(logic.getUpdatedAgentMap());									//set the new map
 		assertEquals(BUMP, perceive);		//perceived a bump
+=======
+		logic.move(0, 0);												//make the move
+		//agent.setMap(agent.getMap());									//set the new map
+		assertEquals(BUMP, agent.getMap()[0][0].cellData[BUMP]);									//perceived a bump
+>>>>>>> edc014495a7ff67027f140e024db97c76a1f6dc6
 		assertEquals(true, agent.getMap()[0][0].cellData[WALL]);		//wall in map 
 		assertEquals(false, agent.getMap()[0][0].cellData[UNDISCOVERED]);//not undiscovered.
 		
@@ -38,8 +44,13 @@ public class TestLogic extends WumpusCore {
 		// Test if shooting the wumpus gives the correct results
 		assertEquals(true, agent.getMap()[4][5].cellData[UNDISCOVERED]); //undiscovered before the move.
 		assertEquals(false, agent.getMap()[4][5].cellData[WUMPUS]);		//no wumpus before the move
+<<<<<<< HEAD
 		perceive = logic.shoot(4,5);									//make the move
 		agent.setMap(logic.getUpdatedAgentMap());									//set the new map
+=======
+		/*perceive = logic.shoot(4,5);									//make the move
+		agent.setMap(agent.getMap());									//set the new map
+>>>>>>> edc014495a7ff67027f140e024db97c76a1f6dc6
 		assertEquals(SCREAM, perceive);									//perceived a scream
 		assertEquals(true, agent.getMap()[4][5].cellData[DEAD_WUMPUS]);		//see dead wumpus
 		assertEquals(false, agent.getMap()[4][5].cellData[UNDISCOVERED]);//not undiscovered.
@@ -54,7 +65,11 @@ public class TestLogic extends WumpusCore {
 		assertEquals(false, agent.getMap()[4][6].cellData[STENCH]);
 		assertEquals(false, agent.getMap()[3][5].cellData[STENCH]);
 		assertEquals(false, agent.getMap()[5][5].cellData[STENCH]);
+<<<<<<< HEAD
 		
+=======
+		*/
+>>>>>>> edc014495a7ff67027f140e024db97c76a1f6dc6
 		System.out.println("Host:");
 		System.out.println(host.toString());
 		

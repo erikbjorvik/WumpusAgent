@@ -14,6 +14,7 @@ public class WumpusLogic extends WumpusCore {
 	
 	public WumpusLogic(){}
 	
+<<<<<<< HEAD
 	public int move(int x, int y) {
 		
 		agentMap[x][y] = hostMap[x][y];
@@ -22,6 +23,15 @@ public class WumpusLogic extends WumpusCore {
 	}
 	
 	public int shoot(int x, int y) {
+=======
+	public void move(int x, int y) {
+		
+		agentMap[x][y] = hostMap[x][y];
+		
+	}
+	
+	public void shoot(int x, int y) {
+>>>>>>> edc014495a7ff67027f140e024db97c76a1f6dc6
 		
 		// If an arrow is show at the wumpus, kill it (SCREAM).
 		if (hostMap[x][y].cellData[WUMPUS]) {
@@ -33,6 +43,7 @@ public class WumpusLogic extends WumpusCore {
 			hostMap[x][y+1].addFalse(STENCH);
 			hostMap[x-1][y].addFalse(STENCH);
 			hostMap[x+1][y].addFalse(STENCH);
+<<<<<<< HEAD
 			agentMap[x][y] = hostMap[x][y];
 			return SCREAM;
 			
@@ -70,6 +81,16 @@ public class WumpusLogic extends WumpusCore {
 		
 	}
 	
+=======
+			
+			
+			agentMap[x][y] = hostMap[x][y];	
+			
+		}
+			
+	}
+	
+>>>>>>> edc014495a7ff67027f140e024db97c76a1f6dc6
 	
 	public CellData[][] getUpdatedAgentMap() {
 		return agentMap;
